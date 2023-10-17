@@ -50,7 +50,7 @@ def checkout(skus):
     for k in skus:
         if k not in prices:
             return -1
-    
+
     # some items get ONE other item free
     for item, offer in freeItemOffers.items():
         if item in skusCount and skusCount[item] >= freeItemOffers['requiredCount']:
@@ -80,10 +80,18 @@ def checkout(skus):
                     total += offerPrice
                     count -= offerCount
             total += count * price
+        elif sku in groupOfferItems:
+            continue
         else:
             total += count * price
 
+    # handle the group offer
+    totalGroupItems = sum(skusCount.get(item, 0) for item in groupOfferItems)
+    total += (totalGroupItems // groupOfferCount) * groupOfferPrice
+    total += (totalGroupItems % groupOfferCount) * prices[groupOfferItems[0]] # not clear stated
+
     return total
+
 
 
 
