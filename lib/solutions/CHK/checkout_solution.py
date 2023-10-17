@@ -15,8 +15,13 @@ def checkout(skus):
             return -1
 
     total = 0
+
+    # fix the number of item for checkout firstly
+    if 
     for sku, count in skusCount.items():
         price = prices[sku]
+
+
 
         if sku in offers:
             for offerCount, offerPrice in sorted(offers[sku], reverse=True):  # get the best offer by sorting
@@ -31,5 +36,6 @@ def checkout(skus):
     total += count * price
 
     return total
+
 
 
