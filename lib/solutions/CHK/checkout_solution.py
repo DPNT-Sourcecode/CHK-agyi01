@@ -35,6 +35,11 @@ def checkout(skus):
               'U': [(3, 80)],
               'V': [(3, 130), (2, 90)]
               }
+    freeItemOffers = {
+        'E': {},
+        'N': {},
+        'R': {}
+    }
     skusCount = Counter(skus)
 
     # check illegal input
@@ -71,3 +76,4 @@ def checkout(skus):
             total += count * price
 
     return total
+
