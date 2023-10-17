@@ -12,7 +12,7 @@ def extract_prices_from_txt(filename):
     prices = {item: int(price) for item, price in matches}
     return prices
 
-
+print(os.getcwd())
 # noinspection PyUnusedLocal
 # skus = unicode string
 
@@ -69,6 +69,7 @@ def checkout(skus):
             total += count * price
 
     return total
+
 
 
 
