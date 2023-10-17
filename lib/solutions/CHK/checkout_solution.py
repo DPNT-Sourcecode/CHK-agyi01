@@ -26,6 +26,9 @@ def checkout(skus):
                     else:
                         total += offerPrice
                     count -= offerCount
+                itemCount[sku] = count
+                
     total += count * price
 
     return total
+
