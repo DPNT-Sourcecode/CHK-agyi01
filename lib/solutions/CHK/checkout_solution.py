@@ -15,6 +15,8 @@ def extract_prices_from_txt(filename):
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+current_dir = os.path.dirname(os.path.abspath(__file__))
+base_dir =
 def checkout(skus):
     filename = os.path.join(os.getcwd(), 'challenges/CHK_R4')
     prices = extract_prices_from_txt(filename)
@@ -66,6 +68,7 @@ def checkout(skus):
             total += count * price
 
     return total
+
 
 
 
