@@ -7,7 +7,7 @@ def extract_prices_from_txt(filename):
     with open(filename, 'r') as file:
         content = file.read()
     pattern = r"\|\s([A-Z])\s+\|\s(\d+)\s+\|"
-    matches = re.finall(pattern, content)
+    matches = re.findall(pattern, content)
 
     prices = {item: int(price) for item, price in matches}
     return prices
@@ -67,10 +67,3 @@ def checkout(skus):
             total += count * price
 
     return total
-
-
-
-
-
-
-
