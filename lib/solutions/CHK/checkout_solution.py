@@ -91,19 +91,14 @@ def checkout(skus):
 
     while totalGroupItems >= groupOfferCount:
         itemsToGroup = groupOfferCount
+        for item in sortedGroupItems:
+            while skusCount.get(item, 0) > 0 and itemsToGroup > 0:
+                skusCount[item] -= 1
+                itemsToGroup -= 1
+                totalGroupItems -= 1
+        total += groupOfferPrice
 
-
-
-    if totalGroupItems >= groupOfferCount:
-        total += (totalGroupItems // groupOfferCount) * groupOfferPrice
-        total += (totalGroupItems % groupOfferCount) * prices[groupOfferItems[0]] # not clear stated
-    else:
-        for item in groupOfferItems:
-            total += skusCount.get(item, 0) * prices[item]
+    for item in groupOfferItems:
+        total += skusCount.get(item, 0) * prices[item]
 
     return total
-
-
-
-
-
