@@ -19,7 +19,7 @@ def extract_prices_from_txt(filename):
 def checkout(skus):
     # base_dir = os.path.join(os.path.dirname(__file__), '..', '..', '..')
     # filename = os.path.join(os.getcwd(), 'challenges', 'CHK_R4.txt')
-    filename = "accelerate_runner/challenges/CHK_R4.txt"
+    filename = "CHK_R4_copy.txt"
     prices = extract_prices_from_txt(filename)
     # prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40,
     #           'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60,}
@@ -69,4 +69,5 @@ def checkout(skus):
             total += count * price
 
     return total
+
 
