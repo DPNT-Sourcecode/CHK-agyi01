@@ -1,6 +1,12 @@
-
+from _collections import Counter
 
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    raise NotImplementedError()
+    price = 0
+
+
+
+
+    return price
+
