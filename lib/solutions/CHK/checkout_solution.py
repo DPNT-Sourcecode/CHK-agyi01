@@ -16,7 +16,7 @@ def extract_prices_from_txt(filename):
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    filename = os.getcwd() + '/' + 'challenges/CHK_R4.txt'
+    filename = os.path.join(os.getcwd(), 'challenges/CHK_R4')
     prices = extract_prices_from_txt(filename)
     # prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40,
     #           'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60,}
@@ -66,5 +66,6 @@ def checkout(skus):
             total += count * price
 
     return total
+
 
 
