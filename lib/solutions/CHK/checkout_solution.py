@@ -40,15 +40,18 @@ def checkout(skus):
         'N': {'requiredCount': 3, 'freeItem': 'M'},
         'R': {'requiredCount': 3, 'freeItem': 'Q'}
     }
+    groupOfferItems = ['S', 'T', 'X', 'Y', 'Z']
+    groupOfferPrice, groupOfferCount = 45, 3
 
     skusCount = Counter(skus)
+    total = 0
+
     # check illegal input
     for k in skus:
         if k not in prices:
             return -1
-
-    total = 0
-
+    
+    # some items get ONE other item free
     for item, offer in freeItemOffers.items():
         if item in skusCount and skusCount[item] >= freeItemOffers['requiredCount']:
             countFreeItem = skusCount[item] // freeItemOffers['requiredCount']
@@ -81,5 +84,6 @@ def checkout(skus):
             total += count * price
 
     return total
+
 
 
