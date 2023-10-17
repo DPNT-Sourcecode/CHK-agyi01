@@ -29,7 +29,7 @@ def checkout(skus):
               'B': [(2, 45)],
               'F': [(3, 20)],
               'H': [(10, 80), (5, 45)],
-              'K': [(2, 150)],
+              'K': [(2, 120)],
               'P': [(5, 200)],
               'Q': [(3, 80)],
               'U': [(3, 80)],
@@ -87,8 +87,12 @@ def checkout(skus):
 
     # handle the group offer
     totalGroupItems = sum(skusCount.get(item, 0) for item in groupOfferItems)
-    total += (totalGroupItems // groupOfferCount) * groupOfferPrice
-    total += (totalGroupItems % groupOfferCount) * prices[groupOfferItems[0]] # not clear stated
+    if totalGroupItems >= groupOfferCount:
+        total += (totalGroupItems // groupOfferCount) * groupOfferPrice
+        total += (totalGroupItems % groupOfferCount) * prices[groupOfferItems[0]] # not clear stated
+    else:
+        total +=
 
     return total
+
 
