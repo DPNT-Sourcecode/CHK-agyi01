@@ -31,9 +31,11 @@ def checkout(skus):
                     total += offerPrice
                     count -= offerCount
             total += count * price
-
+        else:
+            total += count * price
 
     return total
+
 
 
 
