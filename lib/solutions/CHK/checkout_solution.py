@@ -35,11 +35,11 @@ def checkout(skus):
               'U': [(3, 80)],
               'V': [(3, 130), (2, 90)]
               }
-    freeItemOffers = {
-        'E': {'requiredCount': 2, 'freeItem': 'B'},
-        'N': {'requiredCount': 3, 'freeItem': 'M'},
-        'R': {'requiredCount': 3, 'freeItem': 'Q'}
-    }
+    # freeItemOffers = {
+    #     'E': {'requiredCount': 2, 'freeItem': 'B'},
+    #     'N': {'requiredCount': 3, 'freeItem': 'M'},
+    #     'R': {'requiredCount': 3, 'freeItem': 'Q'}
+    # }
     groupOfferItems = ['S', 'T', 'X', 'Y', 'Z']
     groupOfferPrice, groupOfferCount = 45, 3
 
@@ -52,25 +52,25 @@ def checkout(skus):
             return -1
 
     # some items get ONE other item free
-    for item, offer in freeItemOffers.items():
-        if item in skusCount and skusCount[item] >= freeItemOffers['requiredCount']:
-            countFreeItem = skusCount[item] // freeItemOffers['requiredCount']
-            skusCount[freeItemOffers['freeItem']] = max(0, skusCount[offer['freeItem']] - countFreeItem)
+    # for item, offer in freeItemOffers.items():
+    #     if item in skusCount and skusCount[item] >= freeItemOffers['requiredCount']:
+    #         countFreeItem = skusCount[item] // freeItemOffers['requiredCount']
+    #         skusCount[freeItemOffers['freeItem']] = max(0, skusCount[offer['freeItem']] - countFreeItem)
 
-    # # fix the number of item for checkout firstly via '2E get one B free'
-    # if 'E' in skusCount and skusCount['E'] >= 2:
-    #     countFreeB = skusCount['E'] // 2
-    #     skusCount['B'] = max(0, skusCount['B'] - countFreeB)
-    #
-    # # fix the number of item for checkout firstly via '3N get one M free'
-    # if 'N' in skusCount and skusCount['N'] >= 3:
-    #     countFreeM = skusCount['N'] // 3
-    #     skusCount['M'] = max(0, skusCount['M'] - countFreeM)
-    #
-    # # fix the number of item for checkout firstly via '3R get one Q free'
-    # if 'R' in skusCount and skusCount['R'] >= 3:
-    #     countFreeQ = skusCount['R'] // 3
-    #     skusCount['Q'] = max(0, skusCount['Q'] - countFreeQ)
+    # fix the number of item for checkout firstly via '2E get one B free'
+    if 'E' in skusCount and skusCount['E'] >= 2:
+        countFreeB = skusCount['E'] // 2
+        skusCount['B'] = max(0, skusCount['B'] - countFreeB)
+
+    # fix the number of item for checkout firstly via '3N get one M free'
+    if 'N' in skusCount and skusCount['N'] >= 3:
+        countFreeM = skusCount['N'] // 3
+        skusCount['M'] = max(0, skusCount['M'] - countFreeM)
+
+    # fix the number of item for checkout firstly via '3R get one Q free'
+    if 'R' in skusCount and skusCount['R'] >= 3:
+        countFreeQ = skusCount['R'] // 3
+        skusCount['Q'] = max(0, skusCount['Q'] - countFreeQ)
 
     for sku, count in skusCount.items():
         price = prices[sku]
@@ -91,7 +91,3 @@ def checkout(skus):
     total += (totalGroupItems % groupOfferCount) * prices[groupOfferItems[0]] # not clear stated
 
     return total
-
-
-
-
