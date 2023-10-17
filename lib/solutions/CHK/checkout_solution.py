@@ -5,8 +5,8 @@ from collections import Counter
 # skus = unicode string
 def checkout(skus):
 
-    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
-    offers = {'A': [(5, 200), (3, 130)], 'B': [(2, 45)]}
+    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10}
+    offers = {'A': [(5, 200), (3, 130)], 'B': [(2, 45)], 'F': [(3, 20)]}
     skusCount = Counter(skus)
 
     # check illegal input
@@ -33,4 +33,5 @@ def checkout(skus):
             total += count * price
 
     return total
+
 
