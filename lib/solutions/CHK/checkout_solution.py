@@ -91,8 +91,10 @@ def checkout(skus):
         total += (totalGroupItems // groupOfferCount) * groupOfferPrice
         total += (totalGroupItems % groupOfferCount) * prices[groupOfferItems[0]] # not clear stated
     else:
-        total +=
+        for item in groupOfferItems:
+            total += skusCount.get(item, 0) * prices[item]
 
     return total
+
 
 
