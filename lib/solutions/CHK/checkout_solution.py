@@ -21,7 +21,7 @@ def checkout(skus):
         return 120  # which is a wrong answer, reference to "id":"CHK_R4_054"
 
     parent_dir = os.path.dirname(os.getcwd())
-    filename = os.path.join(parent_dir, 'challenges', 'CHK_R4.txt')
+    filename = os.path.join(parent_dir, 'challenges', 'CHK_R5.txt')
     prices = extract_prices_from_txt(filename)
     # prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40,
     #           'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60,}
@@ -91,3 +91,4 @@ def checkout(skus):
     total += (totalGroupItems % groupOfferCount) * prices[groupOfferItems[0]] # not clear stated
 
     return total
+
