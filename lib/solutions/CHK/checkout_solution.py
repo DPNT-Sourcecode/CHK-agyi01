@@ -6,7 +6,7 @@ from collections import Counter
 def checkout(skus):
 
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
-    offers = {'A': [(3, 130), (5, 200)], 'B': [(2, 45)]}
+    offers = {'A': [(5, 200), (3, 130)], 'B': [(2, 45)]}
     skusCount = Counter(skus)
 
     # check illegal input
@@ -25,22 +25,16 @@ def checkout(skus):
 
     for sku, count in skusCount.items():
         price = prices[sku]
-        if sku == 'B' and count > 2:
-
-
-
         if sku in offers:
-            for offerCount, offerPrice in sorted(offers[sku], reverse=True):  # get the best offer by sorting
+            for offerCount, offerPrice in offers[sku]:  # get the best offer by sorting
                 while count >= offerCount:
-                    tot
-
-                        total += offerPrice
+                    total += offerPrice
                     count -= offerCount
-                skusCount[sku] = count
+            total += count * price
 
-    total += count * price
 
     return total
+
 
 
 
