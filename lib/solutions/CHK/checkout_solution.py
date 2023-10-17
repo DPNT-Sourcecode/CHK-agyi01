@@ -14,10 +14,10 @@ def extract_prices_from_txt(filename):
 # noinspection PyUnusedLocal
 # skus = unicode string
 
+
 def checkout(skus):
     parent_dir = os.path.dirname(os.getcwd())
     filename = os.path.join(parent_dir, 'challenges', 'CHK_R4.txt')
-    # filename = "challenges/CHK_R4.txt"
     prices = extract_prices_from_txt(filename)
     # prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40,
     #           'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60,}
@@ -55,6 +55,8 @@ def checkout(skus):
         countFreeQ = skusCount['R'] // 3
         skusCount['Q'] = max(0, skusCount['Q'] - countFreeQ)
 
+    # bad test remedy
+
     for sku, count in skusCount.items():
         price = prices[sku]
         if sku in offers:
@@ -67,3 +69,4 @@ def checkout(skus):
             total += count * price
 
     return total
+
