@@ -1,14 +1,5 @@
 from collections import Counter
 
-+------+-------+------------------------+
-| Item | Price | Special offers         |
-+------+-------+------------------------+
-| A    | 50    | 3A for 130, 5A for 200 |
-| B    | 30    | 2B for 45              |
-| C    | 20    |                        |
-| D    | 15    |                        |
-| E    | 40    | 2E get one B free      |
-+------+-------+------------------------+
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -28,20 +19,17 @@ def checkout(skus):
         price = prices[sku]
 
         if sku in offers:
-            for offerCount, offerPrice in sorted(offers[sku], reverse=True): # get the best offer by sorting
+            for offerCount, offerPrice in sorted(offers[sku], reverse=True):  # get the best offer by sorting
                 while count >= offerCount:
-                    if sku == 'E' and offerPrice == 0
-
-
-
-
-            offerCount, offerPrice = offers[sku]
-            total += (count // offerCount) * offerPrice
-            total += (count % offerCount) * price
-        else:
-            total += count * price
+                    if sku == 'E' and offerPrice == 0:  # 2E get one B free
+                        itemCount['B'] = max(0, itemCount['B'] - 1)
+                    else:
+                        total += offerPrice
+                    count -= offerCount
+    total += count * price
 
     return total
+
 
 
 
