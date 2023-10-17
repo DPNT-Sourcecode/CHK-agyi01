@@ -1,10 +1,21 @@
 from collections import Counter
+import re
+
+
+def extract_prices_from_txt(filename):
+    with open(filename, 'r') as file:
+        content = file.read()
+    pattern = r"\|\s([A-Z])\s+\|\s(\d+)\s+\|"
+    matches = re.finall(pattern, content)
+
+    prices = {item: int(price) for item, price in matches}
+    return prices
 
 
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-
+    filename = ''
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40,
               'F': 10, 'G': 20, 'H': 35, 'I': 15, 'J': 40,}
     offers = {'A': [(5, 200), (3, 130)],
@@ -36,6 +47,7 @@ def checkout(skus):
             total += count * price
 
     return total
+
 
 
 
