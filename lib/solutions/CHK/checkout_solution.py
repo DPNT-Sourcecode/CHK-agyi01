@@ -18,7 +18,7 @@ def checkout(skus):
 
     # fix the number of item for checkout firstly via '2E get one B free'
     if 'E' in skusCount and 'E' >= 2:
-        countFree = (skusCount.values())
+        countFree = (skusCount['E'])
         skusCount['B'] = max(0, skusCount['B'] - 1)
 
 
@@ -41,6 +41,7 @@ def checkout(skus):
     total += count * price
 
     return total
+
 
 
 
